@@ -162,6 +162,6 @@ Este projeto foi desenvolvido no âmbito de uma pesquisa em Ensino de Física, c
 
 **Leandro Galdino de Oliveira**
 
-Bacharel em Ciência e Tecnologia - UFABC
-Engenheiro Aeroespacial - UFABC
-Mestre em Ensino de Ciências e Matemática – IFSP
+Bacharel em Ciência e Tecnologia (UFABC) 
+Engenheiro Aeroespacial (UFABC) 
+Mestre em Ensino de Ciências e Matemática (IFSP).
