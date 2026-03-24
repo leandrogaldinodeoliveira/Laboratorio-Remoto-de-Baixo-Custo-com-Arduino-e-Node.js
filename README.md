@@ -1,4 +1,4 @@
-**Laboratório Remoto de Física com Arduino e Node.js**
+**Laboratório Remoto para o ensino de Física (Ciências) com Arduino e Node.js**
 
 Este projeto consiste em uma plataforma de laboratório remoto de baixo custo, desenvolvida para o ensino de Física, permitindo a execução, monitoramento e 
 coleta de dados experimentais em tempo real via web.
