@@ -4,178 +4,97 @@ Plataforma web para realização de experimentos físicos reais à distância, c
 <img width="3264" height="1468" alt="1762182856352" src="https://github.com/user-attachments/assets/6a385c0f-2858-4709-8e22-ac5967156bcd" />
 
 
-Este projeto consiste em uma plataforma de laboratório remoto de baixo custo, desenvolvida para o ensino de Física, permitindo a execução, monitoramento e 
-coleta de dados experimentais em tempo real via web.
-A arquitetura integra Arduino + Node.js + WebSockets, possibilitando que usuários interajam com um experimento físico real à distância.
+**Sobre o Projeto**
 
-**Objetivo e Contexto**
+O ensino de Física no Brasil enfrenta dois obstáculos persistentes: a carência de infraestrutura laboratorial e a predominância de práticas experimentais de caráter verificacional, que reduzem o experimento à mera confirmação de teorias já ensinadas.
 
-Este projeto foi desenvolvido como uma solução para viabilizar Atividades Práticas Experimentais (APE) em contextos com limitações de infraestrutura, 
-ampliando o acesso a experimentação no ensino de Ciências.
+Este projeto responde a esse problema com um Laboratório Remoto de baixo custo, construído com Arduino e Node.js, que permite a realização de experimentos físicos reais via web. A atividade experimental foi estruturada segundo o Ciclo de Modelagem de David Hestenes, deslocando o foco da verificação para a construção e validação de modelos pelos próprios estudantes.
+
+Desenvolvido como produto educacional do Mestrado Profissional em Ensino de Ciências e Matemática — IFSP.
+
+---
 
 **Arquitetura do Sistema**
 
-O sistema é composto por três camadas principais:
+O sistema é composto por três camadas:
 
-*1. Hardware (Arduino):*
+*1. Hardware (Arduino)*
 
-- Sensores de temperatura DS18B20;
-- Comunicação serial com o servidor via a biblioteca SerialPort do ecossitema do node.js;
-- Execução do experimento físico - experimento de calorimetria.
-
-Código do Arduino: **Projeto_final.ino**
+- Sensores de temperatura DS18B20
+- Comunicação serial com o servidor via biblioteca SerialPort
+- Experimento de calorimetria: coleta contínua de dados térmicos
 
 *2. Backend (Node.js)*
 
-Responsável por:
-
-- Comunicação com a porta serial;
-- Intermediação entre Arduino e interface web;
-- Controle de acesso ao experimento (concorrência);
-
-**Arquivo principal:**
-
-*Principais tecnologias:*
-
-- Express;
-- Socket.IO;
-- SerialPort;
-
-Dependências:
+- Express para gerenciamento de rotas
+- Socket.IO para comunicação em tempo real
+- Controle de acesso ao experimento (apenas um usuário por vez)
 
 *3. Frontend (Interface Web)*
 
-Interface interativa para o usuário:
+- Controle remoto do experimento (ligar/desligar)
+- Visualização dos dados em tempo real via gráficos
+- Exportação dos dados coletados em .csv
 
-- Controle do experimento (ligar/desligar);
-- Visualização em tempo real dos dados;
-- Download dos dados coletados (CSV);
+---
 
-**Interface:**
+**Funcionamento do Experimento**
 
-*Funcionamento do Sistema*
+Ao iniciar, o sistema executa três fases automaticamente:
 
-O usuário acessa a interface web
+- Aquecimento (30s)
+- Estabilização dos sensores (20s)
+- Coleta de dados em tempo real (10 minutos)
 
-Ao iniciar:
-- Sistema entra em fase de aquecimento (30s);
-- Estabilização dos sensores (20s);
-- Inicia-se a coleta de dados (10 minutos);
-- Dados são transmitidos em tempo real via WebSocket;
-  
+Os dados são transmitidos continuamente via WebSocket e podem ser baixados ao final da sessão.
 
-Usuário pode:
-- Visualizar gráficos;
-- Baixar dados experimentais;
-- Sistema encerra automaticamente ou manualmente;
-- Comunicação em Tempo Real.
+---
 
-A comunicação ocorre via Socket.IO, permitindo:
+**Como Executar**
 
-- Envio de comandos (Ligar / Desligar);
-- Recebimento contínuo de dados do Arduino;
-- Atualização dinâmica da interface;
-- Controle de Acesso.
+Pré-requisitos:
+- Node.js >= 16
+- Arduino com sensores DS18B20 conectado via USB
 
-O sistema implementa um mecanismo simples de exclusividade, ou seja, apenas um usuário pode utiliar o experimento por vez e
-novos acessos são bloqueados enquanto o experimento estiver em uso:
-
-let siteOcupado = false;
-
-Apenas um usuário pode utilizar o experimento por vez
-
-Estrutura dos Dados
-
-Os dados recebidos seguem o formato:
-
-sensor1, sensor2
-
-Tratamento realizado no backend:
-
-dados = data.split(',');
-
-E enviados ao frontend para plotagem em tempo real.
-
-**Exportação de Dados**
-
-Os dados coletados podem ser exportados em formato .csv, contendo:
-
-- Número da leitura
-- Temperatura do sensor 1
-- Temperatura do sensor 2
-
-  
-**Como Executar o Projeto**
-
-*Pré-requisitos*
-
-- Node.js (>= 16)
-- Arduino conectado via USB
-- Porta serial configurada corretamente
-
-*1. Instalar dependências:*
-
+```bash
 npm install
+node index.js
+```
 
-*2. Configurar porta serial:*
+Acesse: http://localhost:3389
 
-No arquivo index.js, ajustar:
+Configuração da porta serial no arquivo `index.js`:
 
+```js
+// Windows
 const port = new SerialPort({ path: 'COM3', baudRate: 9600 });
 
-*3. Executar o servidor*
+// Linux / Mac
+const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 });
+```
 
-node index.js
+---
 
-*4. Acessar no navegador*
+**Limitações**
 
-http://localhost:3389
+- Apenas um usuário simultâneo por vez
+- Requer Arduino físico conectado localmente
+- Sem autenticação de usuários
+- Sem persistência de dados em banco de dados
 
-**Potencial Educacional**
+---
 
-Este laboratório remoto possibilita:
+**Roadmap**
 
-- Realização de experimentos reais à distância
-- Integração entre teoria e prática
-- Desenvolvimento de habilidades investigativas
-- Uso em formação inicial e continuada de professores
-
-*Limitações*
-
-Controle de acesso não escalável (apenas 1 usuário)
-Dependência de conexão serial local
-Ausência de autenticação de usuários
-
-*Possíveis Melhorias*
-
-Sistema de agendamento de uso
-Multiusuários com fila de acesso
-Deploy em nuvem (IoT)
-Dashboard com análise avançada de dados
-Integração com plataformas educacionais
- 
-**Contexto Acadêmico**
-
-Este projeto foi desenvolvido no âmbito de uma pesquisa em Ensino de Física, com foco em:
-
-- Atividades experimentais mediadas por tecnologia;
-- Laboratórios remotos de baixo custo;
-- Formação de professores.
-
-## 🗺️ Roadmap
-
--  Sistema de autenticação de usuários
--  Fila de acesso para múltiplos usuários simultâneos
--  Persistência de dados em banco de dados (PostgreSQL)
--  Deploy em nuvem com acesso remoto real (IoT)
--  Dashboard com análise histórica e comparação de experimentos
--  Integração com plataformas educacionais (Moodle, Google Classroom)
--  Suporte a outros tipos de experimento além da Calorimetria
+- [ ] Autenticação de usuários
+- [ ] Fila de acesso para múltiplos usuários
+- [ ] Persistência de dados (PostgreSQL)
+- [ ] Deploy em nuvem (IoT)
+- [ ] Dashboard com análise histórica
+- [ ] Integração com plataformas educacionais (Moodle, Google Classroom)
 
 **Autor**
 
-**Leandro Galdino de Oliveira**
+Leandro Galdino de Oliveira
 
-Bacharel em Ciência e Tecnologia (UFABC), 
-Engenheiro Aeroespacial (UFABC) e
-Mestre em Ensino de Ciências e Matemática (IFSP).
+Bacharel em Ciência e Tecnologia (UFABC) · Engenheiro Aeroespacial (UFABC) · Mestre em Ensino de Ciências e Matemática (IFSP)
