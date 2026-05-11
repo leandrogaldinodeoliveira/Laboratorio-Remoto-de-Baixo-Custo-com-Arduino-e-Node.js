@@ -1,4 +1,5 @@
 **Laboratório Remoto para o ensino de Física (Ciências) com Arduino e Node.js**
+Plataforma web para realização de experimentos físicos reais à distância, com coleta e visualização de dados em tempo real — desenvolvida como produto educacional de Mestrado Profissional (IFSP).
 
 <img width="3264" height="1468" alt="1762182856352" src="https://github.com/user-attachments/assets/6a385c0f-2858-4709-8e22-ac5967156bcd" />
 
@@ -160,6 +161,16 @@ Este projeto foi desenvolvido no âmbito de uma pesquisa em Ensino de Física, c
 - Atividades experimentais mediadas por tecnologia;
 - Laboratórios remotos de baixo custo;
 - Formação de professores.
+
+## 🗺️ Roadmap
+
+-  Sistema de autenticação de usuários
+-  Fila de acesso para múltiplos usuários simultâneos
+-  Persistência de dados em banco de dados (PostgreSQL)
+-  Deploy em nuvem com acesso remoto real (IoT)
+-  Dashboard com análise histórica e comparação de experimentos
+-  Integração com plataformas educacionais (Moodle, Google Classroom)
+-  Suporte a outros tipos de experimento além da Calorimetria
 
 **Autor**
 
