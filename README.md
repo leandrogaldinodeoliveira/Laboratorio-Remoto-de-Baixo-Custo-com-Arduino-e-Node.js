@@ -91,10 +91,11 @@ const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 });
 - [ ] Persistência de dados (PostgreSQL)
 - [ ] Deploy em nuvem (IoT)
 - [ ] Dashboard com análise histórica
-- [ ] Integração com plataformas educacionais (Moodle, Google Classroom)
-
+- [ ] Integração com plataformas educacionais
 **Autor**
 
 Leandro Galdino de Oliveira
 
 Bacharel em Ciência e Tecnologia (UFABC) · Engenheiro Aeroespacial (UFABC) · Mestre em Ensino de Ciências e Matemática (IFSP)
+
+
