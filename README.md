@@ -16,25 +16,49 @@ Desenvolvido como produto educacional do Mestrado Profissional em Ensino de Ciê
 
 **Arquitetura do Sistema**
 
+
+<img width="890" height="442" alt="image" src="https://github.com/user-attachments/assets/af6398a6-ba8f-476a-924f-5d799f9ed7ce" />
+Arquitetura interna da aplicação do Laboratório Remoto.
+
 O sistema é composto por três camadas:
 
-*1. Hardware (Arduino)*
+*1. Hardware*
 
-- Sensores de temperatura DS18B20
+- Arduino, Sensores de temperatura DS18B20, Rele, Ebulidor de imersão e LED;
 - Comunicação serial com o servidor via biblioteca SerialPort
 - Experimento de calorimetria: coleta contínua de dados térmicos
+
+  <img width="639" height="324" alt="image" src="https://github.com/user-attachments/assets/204a543d-c44b-4630-9fc4-3cb5c6ce3655" />
+Arduino, módulo relé, sensores de temperatura e ebulidor utilizados no Laboratório Remoto.
 
 *2. Backend (Node.js)*
 
 - Express para gerenciamento de rotas
 - Socket.IO para comunicação em tempo real
 - Controle de acesso ao experimento (apenas um usuário por vez)
+  
+<img width="890" height="187" alt="image" src="https://github.com/user-attachments/assets/a719da88-c834-481a-ad5c-1b7e6f78d598" />
+<img width="799" height="226" alt="image" src="https://github.com/user-attachments/assets/d66f4cde-5d7b-4db8-bcf0-4df46dbceb42" />
+Fluxo de controle e de dados do Laboratório remoto
+
+
+
 
 *3. Frontend (Interface Web)*
 
 - Controle remoto do experimento (ligar/desligar)
 - Visualização dos dados em tempo real via gráficos
 - Exportação dos dados coletados em .csv
+
+<img width="890" height="615" alt="image" src="https://github.com/user-attachments/assets/ecbececd-f054-4cf0-9bb5-9ae503549e4f" />
+Interface web de controle, monitoramento visual e representação dos dados do Laboratório Remoto.
+
+<img width="890" height="468" alt="image" src="https://github.com/user-attachments/assets/f692e0f2-1fa6-4d5a-9b4b-71dacf71e553" />
+Representação gráfica das temperaturas registradas pelo Laboratório Remoto.
+
+
+
+
 
 ---
 
