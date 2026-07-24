@@ -18,6 +18,7 @@ Desenvolvido como produto educacional do Mestrado Profissional em Ensino de Ciê
 
 
 <img width="890" height="442" alt="image" src="https://github.com/user-attachments/assets/af6398a6-ba8f-476a-924f-5d799f9ed7ce" />
+
 Arquitetura interna da aplicação do Laboratório Remoto.
 
 O sistema é composto por três camadas:
@@ -29,6 +30,7 @@ O sistema é composto por três camadas:
 - Experimento de calorimetria: coleta contínua de dados térmicos
 
   <img width="639" height="324" alt="image" src="https://github.com/user-attachments/assets/204a543d-c44b-4630-9fc4-3cb5c6ce3655" />
+
 Arduino, módulo relé, sensores de temperatura e ebulidor utilizados no Laboratório Remoto.
 
 *2. Backend (Node.js)*
@@ -39,6 +41,7 @@ Arduino, módulo relé, sensores de temperatura e ebulidor utilizados no Laborat
   
 <img width="890" height="187" alt="image" src="https://github.com/user-attachments/assets/a719da88-c834-481a-ad5c-1b7e6f78d598" />
 <img width="799" height="226" alt="image" src="https://github.com/user-attachments/assets/d66f4cde-5d7b-4db8-bcf0-4df46dbceb42" />
+
 Fluxo de controle e de dados do Laboratório remoto
 
 
