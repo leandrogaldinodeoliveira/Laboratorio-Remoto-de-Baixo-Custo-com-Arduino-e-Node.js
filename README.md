@@ -54,9 +54,11 @@ Fluxo de controle e de dados do Laboratório remoto
 - Exportação dos dados coletados em .csv
 
 <img width="890" height="615" alt="image" src="https://github.com/user-attachments/assets/ecbececd-f054-4cf0-9bb5-9ae503549e4f" />
+
 Interface web de controle, monitoramento visual e representação dos dados do Laboratório Remoto.
 
 <img width="890" height="468" alt="image" src="https://github.com/user-attachments/assets/f692e0f2-1fa6-4d5a-9b4b-71dacf71e553" />
+
 Representação gráfica das temperaturas registradas pelo Laboratório Remoto.
 
 
